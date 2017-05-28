@@ -1,0 +1,245 @@
+<!DOCTYPE>
+<html>
+<head><title>Task</title>
+<style>
+.bckground
+{
+  background-color:#f1f5f8;
+}
+.head
+{
+  background-color:#183b4f;
+  height:70px;
+}
+.createtask
+{
+  margin:50px;
+  margin-left:140px;
+  width:1200px;
+  height:210px;
+  background-color:#fbfbfb;
+  box-shadow:0px 0px 5px grey;
+}
+.chead
+{
+   width:200px;
+   font-size:18px;
+   height:50px;
+   color:#fbfbfb;
+   background-color:#0f9ff1;
+   
+}
+.intask
+{
+  box-shadow:0px 0px 5px grey;
+  margin:10px;
+  width:420px;
+  height:135px;
+}
+.createinput
+{
+  padding:10px;
+  box-shadow:1px 2px 1px white;
+  width:320px;
+  height:40px;
+  margin:15px;
+ }
+ 
+ .createbutton
+ { 
+   width:100px;
+   height:30px;
+   margin-left:15px;
+   background-color:#183b4f;
+   border-radius:5px;
+   border:none;
+   color:#fbfbfb;
+ }
+ 
+ 
+ .assigntask
+ {
+  margin:50px;
+  margin-left:140px;
+  width:1200px;
+  height:510px;
+  background-color:#fbfbfb;
+  box-shadow:0px 0px 5px grey;
+}
+ 
+ .ahead
+ {
+   width:200px;
+   font-size:18px;
+   height:50px;
+   color:#fbfbfb;
+   background-color:#e9d424;
+}
+.newtask
+{
+  box-shadow:0px 0px 5px grey;
+  margin:10px;
+  width:270px;
+  height:435px;
+}
+.task
+{
+  margin:15px;
+  padding:10px;
+  width:200px;
+  height:150px;
+  background-color:#f1f58;
+  box-shadow:0px 0px 5px grey;
+}
+
+.dev
+{
+  margin:15px;
+  padding:10px;
+  width:200px;
+  height:150px;
+  background-color:#dcfbf2;
+  box-shadow:0px 0px 5px grey;
+}
+
+.test
+{
+  margin:15px;
+  padding:10px;
+  width:200px;
+  height:150px;
+  background-color:#fbf8dc;
+  box-shadow:0px 0px 5px grey;
+}
+
+.cmplt
+{
+  margin:15px;
+  padding:10px;
+  width:200px;
+  height:150px;
+  background-color:#dcfbf2;
+  box-shadow:0px 0px 5px grey;
+}
+</style>
+<head>
+<body class="bckground">
+<header class="head">
+<div>
+<pre><p style="color:#fbfbfb; padding:20px;"><span style="font-size:19px;margin-left:12px;font-family:georgia;"><b>Asignee</b></span> | <span style="font-style:cursive;" ><i>Assign tasks and projects among yourself</i></span></p></pre>
+</div>
+<header>
+
+<div class="createtask">
+<div class="chead">
+<p style="padding:15px;"><b>Create Task</b></p>
+</div>
+
+<div class="intask" >
+<input type="text" id="ctask" placeholder="Task Name" class="createinput" /><br>
+<input type="button" class="createbutton" id="createbutton" value="Create"/>
+</div>
+</div>
+
+
+<div class="assigntask">
+<div class="ahead">
+<p style="padding:15px;"><b>Assign Task</b></p>
+</div>
+<div style="display:inline-flex;">
+<div class="newtask">
+<p style="border-bottom:1px solid grey; padding:15px;font-weight:bold;text-align:center; font-size:20px;">New Task</p>
+
+<div id="add">
+<div class="task" id="task">
+<p id="taketask">1. <label id="puttask"></label></p>
+<select style="width:183px; height:30px;" id="engineer">
+<option>Select Engineer</option>
+<option value="John">John Doe</option>
+<option value="Jane">Jane Doe</option>
+<option value="Jack">Jack Doe</option>
+</select><br><br>
+<input type="button" value="Assign" class="createbutton" id="assign"/>
+</div>
+</div>
+
+</div>
+
+<div class="newtask">
+<p style="border-bottom:1px solid grey; padding:15px;font-weight:bold;text-align:center; font-size:20px;">Development</p>
+<div class="dev">
+<p>1. <label id="devtask"></label></p>
+<p>Assigned to:<label id="devengnr"></label></p>
+<input type="button" value="Dev Complete" class="createbutton" id="devcmplt"/>
+</div>
+
+</div>
+
+<div class="newtask">
+<p style="border-bottom:1px solid grey; padding:15px;font-weight:bold;text-align:center; font-size:20px;">Testing</p>
+<div class="test">
+<p>1. <label id="testtask"></label></p>
+<p>Assigned to:<label id="testengnr"></label></p>
+<input type="button" value="Test Complete" class="createbutton" id="testbtn"/><br>
+<div  id="#backtodev">Back to dev</div>
+</div>
+</div>
+
+<div class="newtask">
+<p style="border-bottom:1px solid grey; padding:15px;font-weight:bold;text-align:center; font-size:20px;">Completed</p>
+<div class="cmplt">
+<p>1.<label id="taskcmplt"></label></p>
+<p>Assigned to:<label id="taskengnr"></label></p>
+
+</div>
+</div>
+</div>
+</div>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script>
+
+var temp = $('#task').html();
+$('#createbutton').click(function()
+{
+  /*$('#add').append(temp);*/
+  var task = $('#ctask').val();
+   $('#puttask').html(task);
+   $('#ctask').val("");
+});
+
+
+$('#engineer').change(function()
+{
+    a = $('#engineer :selected').val();
+   
+});
+ var b = $('#puttask');
+ 
+ $('#assign').click(function()
+{
+  $('#devengnr').text(a);
+  $('#devtask').html(b);
+});
+ 
+ $('#devcmplt').click(function()
+ {
+   $('#testengnr').text(a);
+   $('#testtask').html(b);
+ });
+ 
+  $('#backtodev').click(function()
+{
+  $('#devengnr').text(a);
+
+ $('#testtask').html("");
+});
+ 
+ $('#testbtn').click(function()
+ {
+  $('#taskengnr').text(a);
+   $('#taskcmplt').html(b);
+ });
+</script>
+</body>
+</html>
